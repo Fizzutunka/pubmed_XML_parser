@@ -30,7 +30,9 @@ Vector_retriever finds a matching article via a search in the abstract in a quer
 
 
 # NEO4J Schema DB
+
 Article-[FOUND_IN}->Journal
+
 Author -[WROTE]-> Article 
 
 Article: 
