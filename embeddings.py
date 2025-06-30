@@ -45,18 +45,17 @@ print(f"Retrieved {len(documents)} abstracts for embedding.")
  # Embed and index into Neo4j vector store
 embedder = OpenAIEmbeddings(model="text-embedding-ada-002") 
 
-neo4j_vector = Neo4jVector.from_documents(
-    documents,
+neo4j_vector = Neo4jVector.from_existing_graph(
     embedding=embedder,
     url=os.getenv("NEO4J_URI"),
     username=os.getenv("NEO4J_USERNAME"),
     password=os.getenv("NEO4J_PASSWORD"),
-    node_label="article",  # Target the existing nodes called 'article'
-    text_node_property="abstract", # Where the text to embedd is stored
-    embedding_node_property = "article_embedding"    # new property for embeddings
+    node_label="Article",  # Target the existing nodes called 'article'
+    text_node_properties=["abstract"], # Where the text to embedd is stored
+    embedding_node_property = "abstract_vectors"    # new property for embeddings
 )
 
-print("Abstracts embedded and saved as Neo4j nodes.")    
+print("Abstracts embedded and saved within Article Neo4j nodes.")    
 
 
 from langchain_community.vectorstores.neo4j_vector import Neo4jVector
