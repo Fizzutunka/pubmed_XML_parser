@@ -21,22 +21,22 @@ def test_connection(tx):
 with driver.session() as session:
     session.execute_write(test_connection)
 
-# retrieving the abstracts from the database
-def get_abstracts(tx):
-    query = """
-    MATCH (a:Article)
-    WHERE a.abstract IS NOT NULL
-    RETURN a.pmid AS pmid, a.abstract AS abstract
-    """
-    result = tx.run(query)
-    return [
-        Document(page_content=record["abstract"], metadata={"pmid": record["pmid"]})
-        for record in result
-    ]
+# # retrieving the abstracts from the database. NOT IN USE. neo4j_vector does this code itself within-node
+# def get_abstracts(tx):
+#     query = """
+#     MATCH (a:Article)
+#     WHERE a.abstract IS NOT NULL
+#     RETURN a.pmid AS pmid, a.abstract AS abstract
+#     """
+#     result = tx.run(query)
+#     return [
+#         Document(page_content=record["abstract"], metadata={"pmid": record["pmid"]})
+#         for record in result
+#     ]
 
-with driver.session() as session:
-    documents = session.execute_read(get_abstracts)
-print(f"Retrieved {len(documents)} abstracts for embedding.")
+# with driver.session() as session:
+#     documents = session.execute_read(get_abstracts)
+# print(f"Retrieved {len(documents)} abstracts for embedding.")
 
 # No Chunking method as abstracts are typically small enough to be processed in one go.
 # Although, abstracts may be too small for meaningfull embedding model and comparisons
