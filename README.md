@@ -47,6 +47,7 @@ journal_issn
 Journal:
 issn
 title
+
 Author:
 name [format: F. Last]
 
