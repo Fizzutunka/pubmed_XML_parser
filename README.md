@@ -2,10 +2,14 @@
 Creating a neo4j database and python XML parser for PubMED abstracts. 
 
 
-Create an .env file with the following: 
+Create an .env file with the following:
+
 OPENAI_API_KEY="..."
-NEO4J_URI="..." (local host usually: "bolt://localhost:7687"
+
+NEO4J_URI="..." (local host usually: "bolt://localhost:7687")
+
 NEO4J_USERNAME="..."
+
 NEO4J_PASSWORD="..."
 
 
