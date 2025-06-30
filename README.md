@@ -25,7 +25,6 @@ A similarity score between Article abstracts via. a searching query is printed.
 Vector_retriever finds a matching article via a search in the abstract in a query with OpenAI gpt-4o-mini. 
 
 
-
 # NEO4J Schema DB
 Article-[FOUND_IN}->Journal
 Author -[WROTE]-> Article 
